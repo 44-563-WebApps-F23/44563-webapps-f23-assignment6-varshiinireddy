@@ -23,7 +23,8 @@
 <script> 
     let good=0;
     let oops=0;
-function checkAuthor (){
+function checkAuthor ()
+{
     
     hidden = document.getElementById("hiddenAuthor").value
     guess = document.getElementById("guessAuthor").value
@@ -38,10 +39,32 @@ function checkAuthor (){
         alert('Sorry')
         out.innerHTML="Results: Good-"+good+",Oops-"+oops
     }
+
+    function selectImage() {
+            var imageElement = document.getElementById("cityImage");
+
+            // Use a switch statement to determine the next image
+            switch (useImage) {
+                case 1:
+                    imageElement.src = "Houston.jpg";
+                    useImage = 2;
+                    break;
+                case 2:
+                    imageElement.src = "chicago.jpg";
+                    useImage = 3;
+                    break;
+                case 3:
+                    imageElement.src = "pennsylvania.jpg"; // Wrap back to the first image
+                    useImage = 1;
+                    break;
+                default:
+                    break;
+            }
+        }
     
 
 }
 </script>
 
 </body>
-</html> 
+</html>
