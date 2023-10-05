@@ -2,8 +2,20 @@
 <html>
  <head>
     <title>WebApps</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" 
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
  </head>
 <body>
+    <body style="background-color: lightgreen">
+    </br>
+    </br>
 
 <h2>Author entry Varshini chittepu</h2>
 
@@ -25,25 +37,42 @@
 </div>
 
 <script> 
-    let good=0;
-    let oops=0;
-function checkAuthor ()
-{
-    
-    hidden = document.getElementById("hiddenAuthor").value
-    guess = document.getElementById("guessAuthor").value
-    
-    out = document.getElementById("result")
-    if(hidden==guess){
-        good++;
-        alert('You got it right')
-        out.innerHTML="Results: Good-"+good+", Oops-"+oops
-    } else {
-        oops++
-        alert('Sorry')
-        out.innerHTML="Results: Good-"+good+",Oops-"+oops
-    }
+    // Global variables
+    var good = 0;
+    var oops = 0;
+    var useImage = 1;
+    // Function to check the author guess
+    function checkAuthor() {
+        // Get the values from input elements
+        var hiddenAuthor = document.getElementById("hidden-author").value;
+        var guessAuthor = document.getElementById("guess-author").value;
+        // Compare the values
+       
 
+        if (hiddenAuthor === guessAuthor) {
+            good++; // Increment the 'good' count
+            alert("You got it right!");
+        } 
+        else
+        {
+            oops++; // Increment the 'oops' count
+            if(oops >=7)
+            {
+                document.getElementById('guessbutton').onclick = function()
+                 {
+                    alert("Sorry ran out of guess");
+                 }
+            }
+            else
+            {
+                alert("Sorry");
+            }
+        }
+       
+        // Update the innerHTML for the results element
+        document.getElementById("good-count").innerHTML = good;
+        document.getElementById("oops-count").innerHTML = oops;       
+    }
     function selectImage() {
             var imageElement = document.getElementById("cityImage");
 
